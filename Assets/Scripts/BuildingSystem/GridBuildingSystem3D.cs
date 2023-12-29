@@ -15,7 +15,8 @@ public class GridBuildingSystem3D : MonoBehaviour {
 
     private GridXZ<GridObject> grid;
     [SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList = null;
-    private PlacedObjectTypeSO placedObjectTypeSO;
+    [Header("Edificio que se construira")]
+    [SerializeField] private PlacedObjectTypeSO placedObjectTypeSO;
     private PlacedObjectTypeSO.Dir dir;
 
     private void Awake() {
@@ -100,7 +101,7 @@ public class GridBuildingSystem3D : MonoBehaviour {
                 //DeselectObjectType();
             } else {
                 // Cannot build here
-                UtilsClass.CreateWorldTextPopup("Cannot Build Here!", mousePosition);
+                UtilsClass.CreateWorldTextPopup("No se puede costruir aqui", mousePosition);
             }
         }
 
