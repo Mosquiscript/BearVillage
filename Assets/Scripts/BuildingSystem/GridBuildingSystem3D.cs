@@ -19,12 +19,17 @@ public class GridBuildingSystem3D : MonoBehaviour {
     [SerializeField] private PlacedObjectTypeSO placedObjectTypeSO;
     private PlacedObjectTypeSO.Dir dir;
 
+
+    [Header("Tamaño de la Grid")]
+    [SerializeField] private int gridWidth;
+    [SerializeField] private int gridHeight;
+    [SerializeField] private float cellSize;
+
     private void Awake() {
         Instance = this;
-
-        int gridWidth = 10;
-        int gridHeight = 10;
-        float cellSize = 10f;
+        gridWidth = 10;
+        gridHeight = 10;
+        cellSize = 10f;
         grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, new Vector3(0, 0, 0), (GridXZ<GridObject> g, int x, int y) => new GridObject(g, x, y));
 
         placedObjectTypeSO = null;// placedObjectTypeSOList[0];
