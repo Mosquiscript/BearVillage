@@ -7,7 +7,7 @@ public class ScrollAndPinch : MonoBehaviour
 
     public Camera Camera;
     public bool Rotate;
-    protected Plane Plane;
+    public Plane Plane;
 
     private void Awake()
     {
