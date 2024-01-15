@@ -1,18 +1,63 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class GridData
 {
-    // Start is called before the first frame update
-    void Start()
+    Dictionary<Vector3Int, PlacementData> placedObjects = new();
+
+    public void AddObjectAt(Vector3Int gridPosition,
+                            Vector2Int objectSize,
+                            int ID,
+                            int placeObjectIndex)
     {
-        
+        List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition,objectSize);  
+        PlacementData data = new PlacementData(positionToOccupy,ID,placeObjectIndex);
+        foreach(var pos in positionToOccupy)
+        {
+            if (placedObjects.ContainsKey(pos))
+                throw new Exception($"Dictionary already contains this cell position {pos}");
+            placedObjects[pos] = data;
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private List<Vector3Int> CalculatePositions(Vector3Int gridPosition, Vector2Int objectSize)
     {
-        
+        List<Vector3Int> returnVal = new List<Vector3Int>();
+        for(int x = 0;x < objectSize.x; x++)
+        {
+            for (int y = 0; y < objectSize.y; y++)
+            {
+                returnVal.Add(gridPosition + new Vector3Int(x, 0, y));
+            }
+        }
+        return returnVal;
+    }
+
+    public bool CanPlaceObjectAt(Vector3Int gridPosition, Vector2Int objectSize)
+    {
+        List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
+        foreach(var pos in positionToOccupy)
+        {
+            if(placedObjects.ContainsKey(pos))
+                return false;
+        }
+        return true;
+    }
+}
+
+public class PlacementData
+{
+    public List<Vector3Int> occupiedPositions;
+    public int ID {  get; private set; }
+    public int PlaceObjectIndex { get; private set; }
+
+    public PlacementData(List<Vector3Int> occupiedPositions, int iD, int placeObjectIndex)
+    {
+        this.occupiedPositions = occupiedPositions;
+        ID = iD;
+        PlaceObjectIndex = placeObjectIndex;
     }
 }
