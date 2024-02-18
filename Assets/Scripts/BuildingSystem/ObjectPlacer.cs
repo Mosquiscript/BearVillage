@@ -12,6 +12,7 @@ public class ObjectPlacer : MonoBehaviour
     {
         GameObject newObject = Instantiate(prefab);
         newObject.transform.position = position;
+        Debug.Log(position.x + ", " + position.y + ", " + position.z);
         placedGameObjects.Add(newObject);
         return placedGameObjects.Count - 1;
 
