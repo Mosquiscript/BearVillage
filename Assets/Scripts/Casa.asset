@@ -15,5 +15,5 @@ MonoBehaviour:
   nameString: Casa
   prefab: {fileID: 3458836343414568633, guid: 5a553383edc390a48a18017183928d11, type: 3}
   visual: {fileID: 3458836343414568633, guid: 5a553383edc390a48a18017183928d11, type: 3}
-  width: 1
-  height: 1
+  width: 5
+  height: 5
