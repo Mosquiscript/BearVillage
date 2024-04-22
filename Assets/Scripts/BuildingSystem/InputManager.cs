@@ -34,6 +34,7 @@ public class InputManager : MonoBehaviour
         => EventSystem.current.IsPointerOverGameObject();
     public Vector3 GetSelectedMapPosition() { 
         Vector3 mousePos = Input.mousePosition;
+        Debug.Log(mousePos);
         mousePos.z = sceneCamera.nearClipPlane; //Objetos de la camara que se renderizar, osea en el plano cercano
         Ray ray = sceneCamera.ScreenPointToRay(mousePos); //General un ray
         RaycastHit hit;
