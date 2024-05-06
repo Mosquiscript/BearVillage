@@ -1,0 +1,34 @@
+{
+    "name": "Pruebas",
+    "maps": [
+        {
+            "name": "PantallaTactil",
+            "id": "c7b100e9-33e7-4b0b-b618-72786da7d504",
+            "actions": [
+                {
+                    "name": "LaRotacion",
+                    "type": "Button",
+                    "id": "d9733841-e10c-46fe-8fb2-c0384a54b3b3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5370377a-b9fb-41c8-900b-56c58edd6811",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LaRotacion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
