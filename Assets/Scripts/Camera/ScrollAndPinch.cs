@@ -46,8 +46,10 @@ public class ScrollAndPinch : MonoBehaviour
                        Vector3.Distance(pos1b, pos2b);
 
             //edge case
-            if (zoom == 0 || zoom > 10)
+            if (zoom == 0 || zoom < 10)
                 return;
+
+                
 
             //Move cam amount the mid ray
             Camera.transform.position = Vector3.LerpUnclamped(pos1, Camera.transform.position, 1 / zoom);

@@ -10,6 +10,10 @@ public class UIManager : MonoBehaviour
     //Instancias
     public static UIManager Instance;
     //Variables
+    [Header("Paneles")]
+    [SerializeField] private GameObject panelStats;
+    [SerializeField] private GameObject panelStore;
+    [SerializeField] private GameObject panelInfoPlayer;
     [Header("Barra de vida del personaje")]
     [SerializeField] private Image healthPlayer;
     [Header("Barra de Energia del personaje")]
@@ -22,6 +26,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI energyTMP;
     [Header("Texto de la animo del personaje")]
     [SerializeField] private TextMeshProUGUI moodTMP;
+    [Header("Estadisticas Personaje")]
+    [SerializeField] private TextMeshProUGUI nameTMP;
+    [SerializeField] private TextMeshProUGUI ganderTMP;
+    [SerializeField] private TextMeshProUGUI professionTMP;
+    [SerializeField] private TextMeshProUGUI ageTMP;
+    [SerializeField] private TextMeshProUGUI liveTMP;
+    [SerializeField] private TextMeshProUGUI energyPanelTMP;
+    [SerializeField] private TextMeshProUGUI moodPanelTMP;
+    [SerializeField] private TextMeshProUGUI levelProfessionTMP;
     private float healthCurrent;
     private float healthMax;
     private float energyCurrent;
@@ -68,5 +81,27 @@ public class UIManager : MonoBehaviour
     {
         moodCurrent = pmoodCurrent;
         moodMax = pmoodthMax;
+    }
+    public void ShowPanelStats()
+    {
+        if (panelStats.activeSelf == false)
+        {
+            panelStats.SetActive(true);
+        }else{
+            panelStats.SetActive(false);
+        }
+    }
+    public void ShowPanelStore()
+    {
+        if (panelStore.activeSelf == false)
+        {
+            panelStore.SetActive(true);
+        }else{
+            panelStore.SetActive(false);
+        }
+    }
+    public void ShowPanelInfoPlayer(bool state)
+    {
+       panelInfoPlayer.SetActive(state);
     }
 }

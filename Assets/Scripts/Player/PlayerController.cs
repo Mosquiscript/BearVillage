@@ -7,11 +7,18 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerController : MonoBehaviour
 {
+    public Vector3 targetPosition;
+   
+    public bool arrivedAtPosition;
     private NavMeshAgent agent;
     RaycastHit hit;
     Ray ray;
+
+    private Player player;
     private void Awake()
     {
+        arrivedAtPosition = false;
+        player = GetComponent<Player>();
         agent = GetComponent<NavMeshAgent>();
         if (agent == null)
         {
@@ -29,6 +36,7 @@ public class PlayerController : MonoBehaviour
         //Movimiento de personaje 
         PlayerMovementPC();
         PlayerMovementAndroid();
+        /*  HandleMovement(); */
     }
     //Se se da click derecho en el raton de la PC nuestro personaje se movera
     private void PlayerMovementPC()
@@ -54,4 +62,37 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    /* public void MoveTo(Transform transformResource){
+        agent.SetDestination(transformResource.position);
+    } */
+
+     public void SetTargetPosition(Vector3 targetPosition) {
+        targetPosition.y = 0f;
+        this.targetPosition = targetPosition;
+    }
+
+    public void MoveTo(Vector3 position, float stopDistance) {
+        SetTargetPosition(position);
+        
+        //Si el personaje no a llegado al destino
+        if (Vector3.Distance(transform.position, targetPosition) > stopDistance) 
+        {
+            float distanceBefore = Vector3.Distance(transform.position, targetPosition);
+            Debug.Log("No a llegado al destino");
+            arrivedAtPosition = false;
+            agent.SetDestination(targetPosition);
+        } else {
+            // Llego al destino
+            Debug.Log("Llego el destino");
+            arrivedAtPosition = true;
+        }
+    }
+
+    
+
+   
+
+
+    
 }

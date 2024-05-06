@@ -19,8 +19,6 @@ public class PlayerEnergy : MonoBehaviour
     {
         Energy = energyInitial;
         UpdateEnergyBar();
-        
-        
     }
     private void Update()
     {

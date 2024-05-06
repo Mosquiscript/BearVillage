@@ -19,8 +19,6 @@ public class PlayerMood : MonoBehaviour
     {
         Mood = moodInitial;
         UpdateMoodBar();
-        
-        
     }
     private void Update()
     {
