@@ -6,12 +6,7 @@ public enum Gender
     Hombre,
     Mujer
 }
-public enum Profession
-{
-    Herrero,
-    Granjero,
-    Minero, 
-}
+
 
 [CreateAssetMenu(fileName = "PlayerStats", menuName = "PlayerStats", order = 0)]
 public class PlayerStats : ScriptableObject 

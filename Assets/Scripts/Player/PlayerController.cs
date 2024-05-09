@@ -8,7 +8,6 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     public Vector3 targetPosition;
-   
     public bool arrivedAtPosition;
     private NavMeshAgent agent;
     RaycastHit hit;
@@ -79,12 +78,12 @@ public class PlayerController : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPosition) > stopDistance) 
         {
             float distanceBefore = Vector3.Distance(transform.position, targetPosition);
-            Debug.Log("No a llegado al destino");
+            /* Debug.Log("No a llegado al destino"); */
             arrivedAtPosition = false;
             agent.SetDestination(targetPosition);
         } else {
             // Llego al destino
-            Debug.Log("Llego el destino");
+            /* Debug.Log("Llego el destino"); */
             arrivedAtPosition = true;
         }
     }

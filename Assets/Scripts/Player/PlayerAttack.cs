@@ -15,13 +15,13 @@ public class PlayerAttack : MonoBehaviour
     {
         
     }
-    private void EnemyRangeSelected(EnemyInteraction enemySelected)
+    private void EnemyRangeSelected(GameObject enemySelected)
     {
-        if (EnemyObjective == enemySelected)
+        if (EnemyObjective == enemySelected.GetComponent<EnemyInteraction>())
         {
             return;
         }
-        EnemyObjective = enemySelected;
+        EnemyObjective = enemySelected.GetComponent<EnemyInteraction>();
         EnemyObjective.ShowEnemySelected(true);
     }
     private void EnemyNoSelected()
@@ -36,13 +36,13 @@ public class PlayerAttack : MonoBehaviour
     }
     private void OnEnable()
     {
-        SelectionManager.EventEnemySelected += EnemyRangeSelected;
-        SelectionManager.EventEnemyObjectNoSelected += EnemyNoSelected;
+        SelectionManager.EventObjectSelected += EnemyRangeSelected;
+        SelectionManager.EventObjectNoSelected += EnemyNoSelected;
     }
     private void OnDisable()
     {
-        SelectionManager.EventEnemySelected -= EnemyRangeSelected;
-        SelectionManager.EventEnemyObjectNoSelected -= EnemyNoSelected;
+        SelectionManager.EventObjectSelected -= EnemyRangeSelected;
+        SelectionManager.EventObjectNoSelected -= EnemyNoSelected;
     }
 
    

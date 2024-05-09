@@ -5,58 +5,35 @@ using System;
 
 public class SelectionManager : MonoBehaviour
 {
-    public static Action<EnemyInteraction> EventEnemySelected;
-    public static Action EventEnemyObjectNoSelected;
-
-    public static Action<PlayerInteraction> EventPlayerSelected;
-    public static Action EventPlayerObjectNoSelected;
-    
-    public PlayerInteraction playerSelected { get; set; }
-    public EnemyInteraction enemySelected { get; set; }
+    public static Action<GameObject> EventObjectSelected;
+    public static Action EventObjectNoSelected;
+    public GameObject ObjectSelected { get; set; }
     RaycastHit hit;
     Ray ray;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
-
     // Update is called once per frame
     void Update()
     {
-        SelectCharacter();
+        SelectObject();
     }
-    //Selecion de los personajes
-    private void SelectCharacter()
+    //Cuando demos click a un objeto se seleccionara si tiene el layer de "Selectable"
+    private void SelectObject()
     {
         if(Input.GetMouseButtonDown(0))
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Player")))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Selectable")))
             {
-               if (playerSelected == hit.collider.GetComponent<PlayerInteraction>())
-               {    
-                    Debug.Log("es igual");
-                    return;
-               }
-                playerSelected = hit.collider.GetComponent<PlayerInteraction>();
-                EventPlayerSelected?.Invoke(playerSelected);
-            }else if(Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Enemy")))
-            {
-                enemySelected = hit.collider.GetComponent<EnemyInteraction>();
-                EventEnemySelected?.Invoke(enemySelected);
+                ObjectSelected = hit.collider.gameObject;
+                EventObjectSelected?.Invoke(ObjectSelected);
             }
             else
             {
-                if (playerSelected != null)
-                {
-                    EventPlayerObjectNoSelected?.Invoke();
-                }
-                EventEnemyObjectNoSelected?.Invoke();
+                EventObjectNoSelected?.Invoke();
             }
-          
         }
     }
-
-
 }

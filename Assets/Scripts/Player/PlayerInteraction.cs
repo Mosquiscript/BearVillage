@@ -5,32 +5,32 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject selectionFx;
-
     public bool IsSelected { get; set; }
     // Start is called before the first frame update
     void Start()
     {
-        
     }
-
     // Update is called once per frame
     void Update()
     {
-        
     }
-
     public void ShowPlayerSelected(bool status)
     {
         selectionFx.SetActive(status);
     }
-
-    private void PlayerSelected(PlayerInteraction playerInteraction)
+    //Metodo para seleccionar al personaje
+    private void PlayerSelected(GameObject player)
     {
+        //Comprobamos si el objeto selecionado es un jugador, si no es que no se haga el codigo
+        if(player.GetComponent<PlayerInteraction>() == null)
+        {
+            return;
+        }
         IsSelected = true;
         ShowPlayerSelected(true);
         UIManager.Instance.ShowPanelInfoPlayer(true);
     }
-
+    //Metodo para deseleccionar al personaje
     private void PlayerNoSelected()
     {
         IsSelected = false;
@@ -40,12 +40,12 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnEnable()
     {
-        SelectionManager.EventPlayerSelected += PlayerSelected;
-        SelectionManager.EventPlayerObjectNoSelected += PlayerNoSelected;
+        SelectionManager.EventObjectSelected += PlayerSelected;
+        SelectionManager.EventObjectNoSelected += PlayerNoSelected;
     }
     private void OnDisable()
     {
-        SelectionManager.EventPlayerSelected -= PlayerSelected;
-        SelectionManager.EventPlayerObjectNoSelected -= PlayerNoSelected;
+        SelectionManager.EventObjectSelected -= PlayerSelected;
+        SelectionManager.EventObjectNoSelected -= PlayerNoSelected;
     }
 }
