@@ -26,6 +26,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             return;
         }
+        //Si esta seleccionado el personaje y damos click a un recurso o edificio que cambie el estado 
         IsSelected = true;
         ShowPlayerSelected(true);
         UIManager.Instance.ShowPanelInfoPlayer(true);
