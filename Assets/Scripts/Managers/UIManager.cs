@@ -35,20 +35,41 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI energyPanelTMP;
     [SerializeField] private TextMeshProUGUI moodPanelTMP;
     [SerializeField] private TextMeshProUGUI levelProfessionTMP;
+    [Header("Recursos")]
+    [SerializeField] private TextMeshProUGUI mineTMP;
+    [SerializeField] private TextMeshProUGUI foodTMP;
+    [SerializeField] private TextMeshProUGUI woodTMP;
     private float healthCurrent;
     private float healthMax;
     private float energyCurrent;
     private float energyMax;
     private float moodCurrent;
     private float moodMax;
+
+
+  private TextMeshProUGUI resourceAmountText;
+    private Dictionary<ResourceTypeSO, TextMeshProUGUI> resourceTextDic;
+
+
+
     //Metodos
     void Awake()
     {
         Instance = this;
+        resourceTextDic = new Dictionary<ResourceTypeSO, TextMeshProUGUI>();
     }
     // Start is called before the first frame update
     void Start()
     {
+       
+        resourceTextDic[BearVillageAssets.Instance.resourceTypeSO_Refs.stone] = woodTMP;
+        resourceTextDic[BearVillageAssets.Instance.resourceTypeSO_Refs.wood] = foodTMP;
+        resourceTextDic[BearVillageAssets.Instance.resourceTypeSO_Refs.iron] = mineTMP;
+
+       
+        ResourceManager.Instance.OnResourceAmountChanged += Instance_OnResourceAmountChanged;
+
+        UpdateResourceAmounts();    
     }
     // Update is called once per frame
     void Update()
@@ -97,11 +118,21 @@ public class UIManager : MonoBehaviour
         {
             panelStore.SetActive(true);
         }else{
-            panelStore.SetActive(false);
+            panelStore.SetActive(false);    
         }
     }
     public void ShowPanelInfoPlayer(bool state)
     {
        panelInfoPlayer.SetActive(state);
+    }
+
+    private void Instance_OnResourceAmountChanged(object sender, System.EventArgs e) {
+        UpdateResourceAmounts();
+    }
+
+    private void UpdateResourceAmounts() {
+        foreach (ResourceTypeSO resourceTypeSO in BearVillageAssets.Instance.resourceTypeArray) {
+            resourceTextDic[resourceTypeSO].text = ResourceManager.Instance.GetResourceAmount(resourceTypeSO).ToString(); 
+        }
     }
 }

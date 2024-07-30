@@ -4,9 +4,18 @@ using UnityEngine;
 
 public static class EventManager
 {
+    // Eventos de Recursos
+    public static event Action<ResourceTypeSO> AddResourceAmountEvent;
+
+    public static void CallAddResourceAmountEvent(ResourceTypeSO resourceTypeSO)
+    {
+        if (AddResourceAmountEvent != null)
+            {
+                AddResourceAmountEvent(resourceTypeSO);
+            }
+    }
    
     // Time Events
-
     // Advance game minute
     public static event Action<int, Season, int, string, int, int, int> AdvanceGameMinuteEvent;
 

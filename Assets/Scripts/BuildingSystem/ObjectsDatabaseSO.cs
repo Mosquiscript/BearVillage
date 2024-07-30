@@ -21,4 +21,11 @@ public class ObjectData
     [field: SerializeField]
     public GameObject Prefab{ get; private set; }
 
+   /*  public Transform prefab; */
+    public Transform visual;
+
+    public float constructionProgressMax;
+    public float constructionDistanceOffset;
+    public List<ResourceAmount> constructionResourceAmountCostList;
+
 }

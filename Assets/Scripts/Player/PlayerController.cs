@@ -7,16 +7,26 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerController : MonoBehaviour
 {
+    public event EventHandler OnIsSelectedChanged;
     public Vector3 targetPosition;
     public bool arrivedAtPosition;
     private NavMeshAgent agent;
     RaycastHit hit;
     Ray ray;
 
+    public event EventHandler OnStartedMoving;
+    public event EventHandler OnStoppedMoving;
+    public event EventHandler OnDead;
+
+    [SerializeField] private bool isEnemy;
+    private bool isSelected;
+
+    [SerializeField] private IUnitBehaviour unitBehaviour;
     private Player player;
     private void Awake()
     {
-        arrivedAtPosition = false;
+        unitBehaviour = GetComponent<NormalUnitBehaviour>();
+        
         player = GetComponent<Player>();
         agent = GetComponent<NavMeshAgent>();
         if (agent == null)
@@ -30,11 +40,14 @@ public class PlayerController : MonoBehaviour
         
     }
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        
+        unitBehaviour.UpdateBehaviour();
+    
         //Movimiento de personaje 
-        PlayerMovementPC();
-        PlayerMovementAndroid();
+        /* PlayerMovementPC();
+        PlayerMovementAndroid(); */
         /*  HandleMovement(); */
     }
     //Se se da click derecho en el raton de la PC nuestro personaje se movera
@@ -61,11 +74,9 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     /* public void MoveTo(Transform transformResource){
         agent.SetDestination(transformResource.position);
     } */
-
      public void SetTargetPosition(Vector3 targetPosition) {
         targetPosition.y = 0f;
         this.targetPosition = targetPosition;
@@ -88,8 +99,63 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    public void SetActiveBehaviour(IUnitBehaviour unitBehaviour) {
+        this.unitBehaviour = unitBehaviour;
+    }
 
+    public void SetDestination(Vector3 destinationPosition, float stoppingDistance = .5f) {
+        agent.SetDestination(destinationPosition);
+        agent.stoppingDistance = stoppingDistance;
+        agent.isStopped = false;
+        OnStartedMoving?.Invoke(this, EventArgs.Empty);
+    }
+
+    public Vector3 GetPosition() {
+        return transform.position;
+    }
+
+    public void StopMoving() {
+        agent.isStopped = true;
+        OnStoppedMoving?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void NormalMoveTo(Vector3 destinationPosition) {
+
+        Debug.Log("Se   esta moviendo");
+        GetComponent<NormalUnitBehaviour>().MoveTo(destinationPosition);
+    }
+
+    public bool IsStopped() {
+        return agent.isStopped;
+    }
+
+    public Transform GetTransform() {
+        return transform;
+    }
+
+
+    public NavMeshAgent GetNavMeshAgent() {
+        return agent;
+    }
+
+    public bool IsDead() {
+        return false;
+    }
+
+    public bool IsEnemy() {
+        return isEnemy;
+    }
+    
+    public void SetIsSelected(bool isSelected) {
+        this.isSelected = isSelected;
+        OnIsSelectedChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public IUnitBehaviour GetActiveBehaviour() {
+        return unitBehaviour;
+    }
+
+    public bool GetIsSelected() => isSelected;
    
 
 
