@@ -73,6 +73,7 @@ public class PlacementSystem : MonoBehaviour
 
         Console.WriteLine(gridPosition.ToString());
         buildingState.OnAction(gridPosition);
+        StopPlacement();
     }
 
     //private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)

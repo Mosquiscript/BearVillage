@@ -18,18 +18,66 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 1462251031249423552, guid: 7c976890b343921488ac77e4fd630f2c,
       type: 3}
-  - <Name>k__BackingField: Arbol
+    visual: {fileID: 0}
+    constructionProgressMax: 10
+    constructionDistanceOffset: 1
+    constructionResourceAmountCostList: []
+  - <Name>k__BackingField: Aserradero
     <ID>k__BackingField: 1
-    <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 4676460171142640347, guid: f3243f3615462d142b527733a0d969bd,
+    <Size>k__BackingField: {x: 5, y: 5}
+    <Prefab>k__BackingField: {fileID: 890618712440284497, guid: 8d4ebc2ccf4527a4e8685e9c625cdc8a,
       type: 3}
+    visual: {fileID: 4562995386181842893, guid: 8d4ebc2ccf4527a4e8685e9c625cdc8a,
+      type: 3}
+    constructionProgressMax: 10
+    constructionDistanceOffset: 1
+    constructionResourceAmountCostList: []
   - <Name>k__BackingField: Casa
     <ID>k__BackingField: 2
-    <Size>k__BackingField: {x: 2, y: 3}
+    <Size>k__BackingField: {x: 5, y: 5}
     <Prefab>k__BackingField: {fileID: 890618712440284497, guid: 48de27e0fba97224da27f2fe8863a115,
       type: 3}
+    visual: {fileID: 4562995386181842893, guid: 48de27e0fba97224da27f2fe8863a115,
+      type: 3}
+    constructionProgressMax: 10
+    constructionDistanceOffset: 1
+    constructionResourceAmountCostList: []
   - <Name>k__BackingField: Herreria
     <ID>k__BackingField: 3
     <Size>k__BackingField: {x: 5, y: 5}
-    <Prefab>k__BackingField: {fileID: 4050767847404524641, guid: 2f7d22a3ad63bb44d93a33fdae4c3c49,
+    <Prefab>k__BackingField: {fileID: 7291450985049605542, guid: dd87bd62f1a25be48af2ab7b65a58c12,
       type: 3}
+    visual: {fileID: 549981233662119155, guid: dd87bd62f1a25be48af2ab7b65a58c12, type: 3}
+    constructionProgressMax: 10
+    constructionDistanceOffset: 1
+    constructionResourceAmountCostList: []
+  - <Name>k__BackingField: Mina
+    <ID>k__BackingField: 4
+    <Size>k__BackingField: {x: 5, y: 5}
+    <Prefab>k__BackingField: {fileID: 890618712440284497, guid: 1978b70e9a9655a4fa44bbc34168bff6,
+      type: 3}
+    visual: {fileID: 4562995386181842893, guid: 1978b70e9a9655a4fa44bbc34168bff6,
+      type: 3}
+    constructionProgressMax: 10
+    constructionDistanceOffset: 1
+    constructionResourceAmountCostList: []
+  - <Name>k__BackingField: Almacen
+    <ID>k__BackingField: 5
+    <Size>k__BackingField: {x: 5, y: 5}
+    <Prefab>k__BackingField: {fileID: 890618712440284497, guid: 868e435c2dab44b4d87369fbf177904c,
+      type: 3}
+    visual: {fileID: 4562995386181842893, guid: 868e435c2dab44b4d87369fbf177904c,
+      type: 3}
+    constructionProgressMax: 10
+    constructionDistanceOffset: 1
+    constructionResourceAmountCostList: []
+  - <Name>k__BackingField: CampoCocecha
+    <ID>k__BackingField: 6
+    <Size>k__BackingField: {x: 5, y: 5}
+    <Prefab>k__BackingField: {fileID: 890618712440284497, guid: d9e13f414e8fa494dbb4d8eeeca38858,
+      type: 3}
+    visual: {fileID: 4562995386181842893, guid: d9e13f414e8fa494dbb4d8eeeca38858,
+      type: 3}
+    constructionProgressMax: 10
+    constructionDistanceOffset: 1
+    constructionResourceAmountCostList: []

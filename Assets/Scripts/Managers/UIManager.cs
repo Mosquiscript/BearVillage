@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [Header("Paneles")]
     [SerializeField] private GameObject panelStats;
     [SerializeField] private GameObject panelStore;
+    [SerializeField] private GameObject panelBarBuildings;
     [SerializeField] private GameObject panelInfoPlayer;
     [Header("Barra de vida del personaje")]
     [SerializeField] private Image healthPlayer;
@@ -119,6 +120,15 @@ public class UIManager : MonoBehaviour
             panelStore.SetActive(true);
         }else{
             panelStore.SetActive(false);    
+        }
+    }
+    public void ShowPanelBarBuildings()
+    {
+        if (panelBarBuildings.activeSelf == false)
+        {
+            panelBarBuildings.SetActive(true);
+        }else{
+            panelBarBuildings.SetActive(false);    
         }
     }
     public void ShowPanelInfoPlayer(bool state)

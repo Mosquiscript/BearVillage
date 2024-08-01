@@ -27,6 +27,8 @@ public class ConstructionUnitBehaviour : MonoBehaviour, IUnitBehaviour {
         unit.SetActiveBehaviour(this);
         this.buildingConstruction = buildingConstruction;
         state = State.GoingToBuilding;
+
+        Debug.Log("Se va a poner a construirs");
     }
 
     public void UpdateBehaviour() {
@@ -34,14 +36,14 @@ public class ConstructionUnitBehaviour : MonoBehaviour, IUnitBehaviour {
             case State.GoingToBuilding:
                 unit.SetDestination(buildingConstruction.GetPosition());
 
-               /*  if (Vector3.Distance(unit.GetPosition(), buildingConstruction.GetPosition()) < buildingConstruction.GetConstructionDistanceOffset()) {
+                if (Vector3.Distance(unit.GetPosition(), buildingConstruction.GetPosition()) < buildingConstruction.GetConstructionDistanceOffset()) {
                     // Reached!
                     unit.StopMoving();
                     // Start Constructing
                     state = State.Constructing;
 
                     OnStartConstructing?.Invoke(this, EventArgs.Empty);
-                } */
+                }
                 break;
             case State.Constructing:
                 constructionTimer -= Time.deltaTime;
@@ -51,9 +53,9 @@ public class ConstructionUnitBehaviour : MonoBehaviour, IUnitBehaviour {
 
                     buildingConstruction.AddProgress(1f);
 
-                    /* if (buildingConstruction.IsConstructed()) {
+                    if (buildingConstruction.IsConstructed()) {
                         unit.NormalMoveTo(unit.GetPosition());
-                    } */
+                    }
                 }
                 break;
         }

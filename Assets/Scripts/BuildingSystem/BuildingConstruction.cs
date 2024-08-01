@@ -4,8 +4,8 @@ using UnityEngine;
 using CodeMonkey.Utils;
 
 public class BuildingConstruction : MonoBehaviour {
-    /* public static BuildingConstruction Create(Vector3 position, BuildingTypeSO buildingTypeSO) {
-        Transform buildingTransform = Instantiate(ChopChopAssets.Instance.pfBuildingConstruction, position, Quaternion.identity);
+   /*  public static BuildingConstruction Create(Vector3 position, ObjectsDatabaseSO buildingTypeSO) {
+        Transform buildingTransform = Instantiate(BearVillageAssets.Instance.pfBuildingConstruction, position, Quaternion.identity);
 
         BuildingConstruction buildingConstruction = buildingTransform.GetComponent<BuildingConstruction>();
         buildingConstruction.Setup(buildingTypeSO);
@@ -14,14 +14,22 @@ public class BuildingConstruction : MonoBehaviour {
     } */
  
 
-    private ObjectsDatabaseSO buildingTypeSO;
+    /* private ObjectsDatabaseSO buildingTypeSO; */
+    [SerializeField] private Transform thisBuilding;
     private World_Bar constructionBar;
     private float progress;
+    private float constructionDistanceOffset = 2.0f;
+    private float constructionProgressMax = 20.0f;
 
-    private void Setup(ObjectsDatabaseSO buildingTypeSO) {
-        this.buildingTypeSO = buildingTypeSO;
+    private void Awake() {
+        Setup();
+        
+    }
 
-        constructionBar = World_Bar.Create(transform, new Vector3(0, 4, 0), new Vector3(3, .2f), Color.grey, Color.yellow, 1f, 0, new World_Bar.Outline { color = Color.black, size = .1f });
+    private void Setup(/* ObjectsDatabaseSO buildingTypeSO */) {
+        /* this.buildingTypeSO = buildingTypeSO; */
+
+        constructionBar = World_Bar.Create(transform, new Vector3(0, 8, 0), new Vector3(3, .2f), Color.grey, Color.yellow, 1f, 0, new World_Bar.Outline { color = Color.black, size = .1f });
         /* LookAtCamera lookAtCamera = constructionBar.GetGameObject().AddComponent<LookAtCamera>();
         lookAtCamera.SetInvert(true); */
 
@@ -38,25 +46,29 @@ public class BuildingConstruction : MonoBehaviour {
     public void AddProgress(float addAmount) {
         progress += addAmount;
 
+        constructionBar.SetSize(progress / constructionProgressMax);
         /* constructionBar.SetSize(progress / buildingTypeSO.ObjectData.constructionProgressMax); */
 
-        /* if (IsConstructed()) {
-             Transform buildingTransform = Instantiate(buildingTypeSO.ObjectData.prefab, transform.position, Quaternion.identity);
+        if (IsConstructed()) {
+            /* Transform buildingTransform = Instantiate(buildingTypeSO.ObjectData.prefab, transform.position, Quaternion.identity); */
+            Transform buildingTransform = Instantiate(thisBuilding, transform.position, Quaternion.identity);
             Destroy(gameObject); 
-        } */
+        }
     }
 
-    /* public bool IsConstructed() {
-        return progress >= buildingTypeSO.ObjectData.constructionProgressMax;
+    public bool IsConstructed() {
+        return progress >= constructionProgressMax;
+        /* return progress >= buildingTypeSO.ObjectData.constructionProgressMax; */
     }
- */
+
     public Vector3 GetPosition() {
         return transform.position;
     }
 
-    /* public float GetConstructionDistanceOffset() {
-        return buildingTypeSO.ObjectData.constructionDistanceOffset;
-    } */
+    public float GetConstructionDistanceOffset() {
+       /*  return buildingTypeSO.ObjectData.constructionDistanceOffset; */
+        return constructionDistanceOffset;
+    }
 
     private void SetLayerRecursive(GameObject targetGameObject, int layer) {
         targetGameObject.layer = layer;

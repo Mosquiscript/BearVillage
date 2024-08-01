@@ -36,13 +36,13 @@ public class RTSManager : MonoBehaviour {
                 }
 
                 // Test Building Construction Order
-                /* if (raycastHit.collider.TryGetComponent(out BuildingConstruction buildingConstruction)) {
+                if (raycastHit.collider.TryGetComponent(out BuildingConstruction buildingConstruction)) {
                     unitAction = (PlayerController unit) => {
                         if (unit.TryGetComponent<ConstructionUnitBehaviour>(out ConstructionUnitBehaviour constructionUnitBehaviour)) {
                             constructionUnitBehaviour.SetBuildingConstruction(buildingConstruction);
                         }
                     };
-                } */
+                }
 
                 // Test Attack Enemy Order
               /*   if (raycastHit.collider.TryGetComponent<PlayerController>(out PlayerController targetPlayerController)) {

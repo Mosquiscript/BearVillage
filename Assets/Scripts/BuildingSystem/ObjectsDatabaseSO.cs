@@ -22,10 +22,13 @@ public class ObjectData
     public GameObject Prefab{ get; private set; }
 
    /*  public Transform prefab; */
+    [field: SerializeField]
     public Transform visual;
-
+    [field: SerializeField]
     public float constructionProgressMax;
+    [field: SerializeField]
     public float constructionDistanceOffset;
+    [field: SerializeField]
     public List<ResourceAmount> constructionResourceAmountCostList;
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerFX : MonoBehaviour
 {
@@ -32,19 +33,19 @@ public class PlayerFX : MonoBehaviour
             gatheringUnitBehaviour.OnStateBackToNormalMovement += ChopChopUnitVisual_OnStateBackToNormalMovement;
         }
 
-       /*  if (TryGetComponent(out AttackingUnitBehaviour attackingUnitBehaviour)) {
+        /* if (TryGetComponent(out AttackingUnitBehaviour attackingUnitBehaviour)) {
             attackingUnitBehaviour.OnAttacking += (object sender, EventArgs e) => AnimatorIsAttacking(true);
         }
 
         if (TryGetComponent(out RangedAttackingUnitBehaviour rangedAttackingUnitBehaviour)) {
             rangedAttackingUnitBehaviour.OnRangedAttacking += (object sender, EventArgs e) => AnimatorIsAttacking(true);
-        }
+        } */
 
         if (TryGetComponent(out ConstructionUnitBehaviour constructionUnitBehaviour)) {
             constructionUnitBehaviour.OnStartConstructing += (object sender, EventArgs e) => AnimatorIsAttacking(true);
         }
 
-        animEvents.OnPlayReverseSlashEffect += AnimEvents_OnPlayReverseSlashEffect;
+       /*  animEvents.OnPlayReverseSlashEffect += AnimEvents_OnPlayReverseSlashEffect;
         animEvents.OnPlaySlashEffect += AnimEvents_OnPlaySlashEffect; */
     }
 
