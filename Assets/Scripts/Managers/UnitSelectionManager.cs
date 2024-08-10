@@ -37,6 +37,11 @@ public class UnitSelectionManager : MonoBehaviour {
         {
             SelectedUnid();
         }
+
+        if (Input.touchCount == 2)
+            {
+                SelectedUnid();
+            }
     }
 
     private void SelectedUnid(/* Vector2 screenPosition, float time */)

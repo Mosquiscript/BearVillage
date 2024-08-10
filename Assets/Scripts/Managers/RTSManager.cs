@@ -34,6 +34,11 @@ public class RTSManager : MonoBehaviour {
         {
             MoveToUnits();
         }
+
+        if (Input.touchCount > 0)
+            {
+                MoveToUnits();
+            }
         
     }
 
