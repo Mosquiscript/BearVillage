@@ -1,13 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+Set this on an empty game object positioned at (0,0,0) and attach your active camera.
+The script only runs on mobile devices or the remote app.
+*/
+
 using UnityEngine;
 
-public class ScrollAndPinch : MonoBehaviour
+class ScrollAndPinch : MonoBehaviour
 {
-
+    public float zoomOutMin = 1;
+    public float zoomOutMax = 8;
+/* #if UNITY_ANDROID */
     public Camera Camera;
     public bool Rotate;
-    public Plane Plane;
+    protected Plane Plane;
 
     private void Awake()
     {
@@ -17,7 +22,11 @@ public class ScrollAndPinch : MonoBehaviour
 
     private void Update()
     {
-
+        //Con esta funcion se mueve la camara con el touch(Android)
+        CameraTouch();
+    }
+    private void CameraTouch()
+    {
         //Update Plane
         if (Input.touchCount >= 1)
             Plane.SetNormalAndPosition(transform.up, transform.position);
@@ -36,8 +45,9 @@ public class ScrollAndPinch : MonoBehaviour
         //Pinch
         if (Input.touchCount >= 2)
         {
-            var pos1 = PlanePosition(Input.GetTouch(0).position);
-            var pos2 = PlanePosition(Input.GetTouch(1).position);
+            UIManager.Instance.ConsolesLogs("Touch 2 veces");
+            var pos1  = PlanePosition(Input.GetTouch(0).position);
+            var pos2  = PlanePosition(Input.GetTouch(1).position);
             var pos1b = PlanePosition(Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition);
             var pos2b = PlanePosition(Input.GetTouch(1).position - Input.GetTouch(1).deltaPosition);
 
@@ -46,18 +56,17 @@ public class ScrollAndPinch : MonoBehaviour
                        Vector3.Distance(pos1b, pos2b);
 
             //edge case
-            if (zoom == 0 || zoom < 10)
+            if (zoom == 0 || zoom > 10)
                 return;
-
-                
 
             //Move cam amount the mid ray
             Camera.transform.position = Vector3.LerpUnclamped(pos1, Camera.transform.position, 1 / zoom);
 
             if (Rotate && pos2b != pos2)
+            {
                 Camera.transform.RotateAround(pos1, Plane.normal, Vector3.SignedAngle(pos2 - pos1, pos2b - pos1b, Plane.normal));
+            }    
         }
-
     }
 
     protected Vector3 PlanePositionDelta(Touch touch)
@@ -90,5 +99,7 @@ public class ScrollAndPinch : MonoBehaviour
     {
         Gizmos.DrawLine(transform.position, transform.position + transform.up);
     }
+/* #endif */
+
 
 }

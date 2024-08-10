@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
 {
     //Instancias
     public static UIManager Instance;
+    [Header("Consoles Log")]
+    [SerializeField] private TextMeshProUGUI ConsoleLog1;
+    
     //Variables
     [Header("Paneles")]
     [SerializeField] private GameObject panelStats;
@@ -144,5 +147,10 @@ public class UIManager : MonoBehaviour
         foreach (ResourceTypeSO resourceTypeSO in BearVillageAssets.Instance.resourceTypeArray) {
             resourceTextDic[resourceTypeSO].text = ResourceManager.Instance.GetResourceAmount(resourceTypeSO).ToString(); 
         }
+    }
+
+    public void ConsolesLogs(string text1)
+    {
+        ConsoleLog1.text = $"Console Log: {text1}"; 
     }
 }

@@ -13,7 +13,7 @@ public class ResourceManager : MonoBehaviour {
 
     [SerializeField] private List<ResourceAmount> startingResourceAmountList;
 
-    private Dictionary<ResourceTypeSO, int> inventoryResourceTypeDic;
+     [SerializeField] private Dictionary<ResourceTypeSO, int> inventoryResourceTypeDic;
 
 
     private void Awake() {
@@ -51,7 +51,7 @@ public class ResourceManager : MonoBehaviour {
     }
 
     public int GetResourceAmount(ResourceTypeSO resourceTypeSO) {
-        Debug.Log(inventoryResourceTypeDic[resourceTypeSO]);
+        /* Debug.Log(inventoryResourceTypeDic[resourceTypeSO]); */
         return inventoryResourceTypeDic[resourceTypeSO];
     }
 

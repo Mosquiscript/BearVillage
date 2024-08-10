@@ -17,6 +17,7 @@ public class Mouse3D : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseColliderLayerMask)) {
             transform.position = raycastHit.point;
         }
+  
     }
 
     public static Vector3 GetMouseWorldPosition() => Instance.GetMouseWorldPosition_Instance();
@@ -29,5 +30,6 @@ public class Mouse3D : MonoBehaviour {
             return Vector3.zero;
         }
     }
+ 
 
 }

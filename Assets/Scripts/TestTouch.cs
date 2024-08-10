@@ -16,12 +16,12 @@ public class TestTouch : MonoBehaviour
     }
     private void OnEnable()
     {
-        inputSystemManager.OnStartTouch += Move;
-        Debug.Log("se suscribe");
+        /* inputSystemManager.OnStartTouch += Move;
+        Debug.Log("se suscribe"); */
     }
     private void OnDisable()
     {
-        inputSystemManager.OnEndTouch -= Move;
+        /* inputSystemManager.OnEndTouch -= Move; */
     }
 
     public void Move(Vector2 screenPosition, float time)

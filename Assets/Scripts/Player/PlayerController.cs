@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     public void NormalMoveTo(Vector3 destinationPosition) {
 
-        Debug.Log("Se   esta moviendo");
+        Debug.Log("Se esta moviendo");
         GetComponent<NormalUnitBehaviour>().MoveTo(destinationPosition);
     }
 

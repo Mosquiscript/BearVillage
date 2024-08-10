@@ -204,7 +204,8 @@ public class CameraMovement : MonoBehaviour
             return;
 
         float inputValue = obj.ReadValue<Vector2>().x;
-        transform.rotation = Quaternion.Euler(0f, inputValue * maxRotationSpeed + transform.rotation.eulerAngles.y, 0f);
+        /* transform.rotation = Quaternion.Euler(0f, inputValue * maxRotationSpeed + transform.rotation.eulerAngles.y, 0f); */
+        transform.rotation = Quaternion.Euler(inputValue * maxRotationSpeed + transform.rotation.eulerAngles.x, 0f, 0f);
     }
 
     //gets the horizontal forward vector of the camera

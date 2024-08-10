@@ -34,7 +34,7 @@ MonoBehaviour:
     constructionResourceAmountCostList: []
   - <Name>k__BackingField: Casa
     <ID>k__BackingField: 2
-    <Size>k__BackingField: {x: 5, y: 5}
+    <Size>k__BackingField: {x: 4, y: 4}
     <Prefab>k__BackingField: {fileID: 890618712440284497, guid: 48de27e0fba97224da27f2fe8863a115,
       type: 3}
     visual: {fileID: 4562995386181842893, guid: 48de27e0fba97224da27f2fe8863a115,
