@@ -7,7 +7,9 @@ public class CameraController : MonoBehaviour
     private CameraControlActions cameraActions;
     private InputAction movement;
     private Transform cameraTransform;
-    protected Plane plane;
+    public Camera Camera;
+    public bool Rotate;
+    protected Plane Plane;
 
     //[BoxGroup("Horizontal Translation")]
     [SerializeField]
