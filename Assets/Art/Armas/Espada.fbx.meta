@@ -1,51 +1,9 @@
 fileFormatVersion: 2
-guid: 98c4260157182aa448c73f0ef7971232
+guid: d380896fe9ede384c929316db2e90d6c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Arbol1
-    second: {fileID: 3585099033423918778, guid: 338871611cb130f4e984719d301a7f4c,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Arbol2
-    second: {fileID: 3585099033423918778, guid: 338871611cb130f4e984719d301a7f4c,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Arbol4.001
-    second: {fileID: 3585099033423918778, guid: 338871611cb130f4e984719d301a7f4c,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 3585099033423918778, guid: 338871611cb130f4e984719d301a7f4c,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 3585099033423918778, guid: 338871611cb130f4e984719d301a7f4c,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Pino1
-    second: {fileID: 3585099033423918778, guid: 338871611cb130f4e984719d301a7f4c,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tronco
-    second: {fileID: 3585099033423918778, guid: f51cd4a9ff393a44da2b557f98826734,
-      type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -135,7 +93,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1

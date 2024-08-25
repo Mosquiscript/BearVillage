@@ -57,6 +57,8 @@ public class CameraController : MonoBehaviour
     private Vector3 horizontalVelocity;
     private Vector3 lastPosition;
 
+    public Quaternion newRotation;
+
     //tracks where the dragging action started
     Vector3 startDrag;
 
@@ -64,6 +66,10 @@ public class CameraController : MonoBehaviour
     {
         cameraActions = new CameraControlActions();
         cameraTransform = this.GetComponentInChildren<Camera>().transform;
+    }
+
+    private void Start() {
+        newRotation = transform.rotation;
     }
 
     private void OnEnable()
@@ -89,16 +95,18 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         //Camera touch
-        CameraTouch();
+        /* CameraTouch(); */
         //inputs
-        GetKeyboardMovement();
-        CheckMouseAtScreenEdge();
-        DragCamera();
+        /* GetKeyboardMovement(); */
+        /* CheckMouseAtScreenEdge(); */
+        /* DragCamera(); */
 
         //move base and camera objects
-        UpdateVelocity();
+        /* UpdateVelocity();
         UpdateBasePosition();
-        UpdateCameraPosition();
+        UpdateCameraPosition(); */
+
+       
     }
 
     private void UpdateVelocity()
@@ -200,17 +208,23 @@ public class CameraController : MonoBehaviour
         zoomTarget -= zoomSpeed * (zoomHeight - cameraTransform.localPosition.y) * Vector3.forward;
 
         cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, zoomTarget, Time.deltaTime * zoomDampening);
+        
         cameraTransform.LookAt(this.transform);
+        
     }
 
     private void RotateCamera(InputAction.CallbackContext obj)
     {
-        if (!Mouse.current.middleButton.isPressed)
-            return;
+        /* if (!Mouse.current.middleButton.isPressed)
+            return; */
 
-        float inputValue = obj.ReadValue<Vector2>().x;
+        /* float inputValue = obj.ReadValue<Vector2>().x; */
+        Debug.Log("estamos girando hacia la izquierda");
+            newRotation *= Quaternion.Euler(Vector3.up * 1.0f);
+        
         /* transform.rotation = Quaternion.Euler(0f, inputValue * maxRotationSpeed + transform.rotation.eulerAngles.y, 0f); */
-        transform.rotation = Quaternion.Euler(inputValue * maxRotationSpeed + transform.rotation.eulerAngles.x, 0f, 0f);
+        /* transform.rotation = Quaternion.Euler(inputValue * maxRotationSpeed + transform.rotation.eulerAngles.x, 0f, 0f); */
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * maxRotationSpeed); 
     }
 
     //gets the horizontal forward vector of the camera
@@ -228,7 +242,7 @@ public class CameraController : MonoBehaviour
         right.y = 0f;
         return right;
     }
-    private void CameraTouch()
+   /*  private void CameraTouch()
     {
         //Update Plane
         if (Input.touchCount >= 1)
@@ -270,9 +284,9 @@ public class CameraController : MonoBehaviour
                 Camera.transform.RotateAround(pos1, Plane.normal, Vector3.SignedAngle(pos2 - pos1, pos2b - pos1b, Plane.normal));
             }    
         }
-    }
+    } */
 
-    protected Vector3 PlanePositionDelta(Touch touch)
+    /* protected Vector3 PlanePositionDelta(Touch touch)
     {
         //not moved
         if (touch.phase != TouchPhase.Moved)
@@ -286,7 +300,7 @@ public class CameraController : MonoBehaviour
 
         //not on plane
         return Vector3.zero;
-    }
+    } */
 
     protected Vector3 PlanePosition(Vector2 screenPos)
     {

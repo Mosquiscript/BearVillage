@@ -23,10 +23,11 @@ class ScrollAndPinch : MonoBehaviour
     private void Update()
     {
         //Con esta funcion se mueve la camara con el touch(Android)
-        CameraTouch();
+        /* CameraTouch(); */
     }
     private void CameraTouch()
     {
+        Debug.Log(transform.up + transform.position + Plane.normal);
         //Update Plane
         if (Input.touchCount >= 1)
             Plane.SetNormalAndPosition(transform.up, transform.position);

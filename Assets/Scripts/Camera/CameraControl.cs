@@ -53,6 +53,7 @@ public class CameraMovement : MonoBehaviour
     //used to track and maintain velocity w/o a rigidbody
     private Vector3 horizontalVelocity;
     private Vector3 lastPosition;
+    Quaternion newRotation;
 
     //tracks where the dragging action started
     Vector3 startDrag;
@@ -87,7 +88,7 @@ public class CameraMovement : MonoBehaviour
     {
         //inputs
         GetKeyboardMovement();
-        CheckMouseAtScreenEdge();
+        /* CheckMouseAtScreenEdge(); */
         DragCamera();
 
         //move base and camera objects
@@ -105,8 +106,7 @@ public class CameraMovement : MonoBehaviour
 
     private void GetKeyboardMovement()
     {
-        Vector3 inputValue = movement.ReadValue<Vector2>().x * GetCameraRight()
-                    + movement.ReadValue<Vector2>().y * GetCameraForward();
+        Vector3 inputValue = movement.ReadValue<Vector2>().x * GetCameraRight() + movement.ReadValue<Vector2>().y * GetCameraForward();
 
         inputValue = inputValue.normalized;
 
@@ -200,12 +200,20 @@ public class CameraMovement : MonoBehaviour
 
     private void RotateCamera(InputAction.CallbackContext obj)
     {
-        if (!Mouse.current.middleButton.isPressed)
-            return;
+        /* if (!Mouse.current.middleButton.isPressed)
+            return; */
 
-        float inputValue = obj.ReadValue<Vector2>().x;
+        //Cuando precionemos la tecla F rota hacia la izquierda
+       
+            Debug.Log("estamos girando hacia la izquierda");
+            newRotation *= Quaternion.Euler(Vector3.up * maxRotationSpeed);
+            transform.rotation = newRotation;
+
+        
+
+        /* float inputValue = obj.ReadValue<Vector2>().x; */
         /* transform.rotation = Quaternion.Euler(0f, inputValue * maxRotationSpeed + transform.rotation.eulerAngles.y, 0f); */
-        transform.rotation = Quaternion.Euler(inputValue * maxRotationSpeed + transform.rotation.eulerAngles.x, 0f, 0f);
+        /* transform.rotation = Quaternion.Euler(inputValue * maxRotationSpeed + transform.rotation.eulerAngles.x, 0f, 0f); */
     }
 
     //gets the horizontal forward vector of the camera

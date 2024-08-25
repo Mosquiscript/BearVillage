@@ -40,7 +40,7 @@ public partial class @CameraControlActions: IInputActionCollection2, IDisposable
                     ""name"": ""RotateCamera"",
                     ""type"": ""Value"",
                     ""id"": ""d4423161-059d-468a-bea5-06264f0f8ecf"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -58,8 +58,8 @@ public partial class @CameraControlActions: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""0810d8fe-b053-448d-92a1-20efb98926b1"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""id"": ""857b7c21-d18e-489d-bd66-2c26c3265e2c"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
